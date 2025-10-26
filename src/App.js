@@ -7,10 +7,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Route with dynamic URL parameter */}
         <Route path="/" element={<Editor />} />
         <Route path="/editor" element={<Editor />} />
-
       </Routes>
     </Router>
   );
