@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EditorComponent from './EditorComponent';
 
 const Editor = () => {
 
-  const speakerWiseTrack = [
+  const list = [
     {
       id: 1,
       speakerName: "Speaker 1",
@@ -25,6 +25,13 @@ const Editor = () => {
   ];
 
   const originalMedia = 'https://fameplay-dev.s3.amazonaws.com/projects/68efff77423e7a278aec4ae5/audios/68efff79423e7a278aec4af7/68f28a4e423e7a278aee3305-1760800182263.mp3';
+
+
+  const [speakerWiseTrack, setSpeakerWiseTrack] = useState([]);
+
+  useEffect ( () => {
+    setSpeakerWiseTrack(list);
+  },[])
 
   return (
       <>
