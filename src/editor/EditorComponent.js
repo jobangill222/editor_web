@@ -531,6 +531,19 @@ const EditorComponent = (props) => {
                         )
                       );
                     }}
+                    onDeleteSegment={(oldSegmentId) => {
+                      setSpeakerWiseTracks((prevTracks) =>
+                        prevTracks.map((t) =>
+                          t.id === speakerTrack.id
+                            ? {
+                                ...t,
+                                segments: t.segments
+                                  .filter((seg) => seg.id !== oldSegmentId)
+                              }
+                            : t
+                        )
+                      );
+                    }}
                   />
                 </div>
               </div>

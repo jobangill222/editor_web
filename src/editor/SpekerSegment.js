@@ -6,7 +6,7 @@ const pixelsPerSecond = 30; // 30px = 1s
 const secondsToPixels = (s) => s * pixelsPerSecond;
 const pixelsToSeconds = (px) => px / pixelsPerSecond;
 
-const SpekerSegment = ({ speakerSegments, onSegmentTimeChange, onSegmentSplit, pausePlaying }) => {
+const SpekerSegment = ({ speakerSegments, onSegmentTimeChange, onSegmentSplit, onDeleteSegment, pausePlaying }) => {
 
   const [segments, setSegments] = useState(speakerSegments);
 
@@ -294,7 +294,13 @@ const SpekerSegment = ({ speakerSegments, onSegmentTimeChange, onSegmentSplit, p
     if (!contextMenu) return;
     const { segment } = contextMenu;
 
+    pausePlaying();
+
     setSegments((prev) => prev.filter((s) => s.id !== segment.id));
+
+    if(onDeleteSegment) {
+      onDeleteSegment(segment.id);
+    }
     triggerEvent("delete", { id: segment.id });
 
     setContextMenu(null);
