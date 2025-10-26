@@ -8,8 +8,12 @@ const pixelsToSeconds = (px) => px / pixelsPerSecond;
 
 const SpekerSegment = ({ speakerSegments, onSegmentTimeChange, onSegmentSplit, onDeleteSegment, pausePlaying }) => {
 
-  const [segments, setSegments] = useState(speakerSegments);
+  useEffect(() => {
+    setSegments(speakerSegments);
+  }, [speakerSegments]);
 
+  const [segments, setSegments] = useState([]);
+  
   const dragData = useRef({
     id: null,
     startX: 0,

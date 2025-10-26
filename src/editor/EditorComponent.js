@@ -6,7 +6,11 @@ import OriginalAudioWaveComponent from "./OriginalAudioWaveComponent";
 const EditorComponent = (props) => {
   const { speakerWiseTrack, originalMedia, pixelsPerSecond, showOriginalMedia, totalDuration } = props;
 
-  const [speakerWiseTracks, setSpeakerWiseTracks] = useState(speakerWiseTrack);
+  useEffect(() => {
+    setSpeakerWiseTracks(speakerWiseTrack);
+  }, [speakerWiseTrack]);
+
+  const [speakerWiseTracks, setSpeakerWiseTracks] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration] = useState(totalDuration);
