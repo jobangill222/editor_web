@@ -18,7 +18,7 @@ export const AudioWaveform = ({
     <div
       className={
         !isLoading
-          ? `px-3 relative w-full h-full rounded overflow-hidden`
+          ? `relative w-full h-full rounded overflow-hidden`
           : "h-full w-full flex items-center justify-center"
       }
       style={{ height: "100%" }}
